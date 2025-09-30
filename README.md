@@ -1,12 +1,22 @@
 --[[
-+---------------------------------------------+
-|                                             |
-|                 EXOWARE                     |
-|           99 Nights In The Forest           |
-|                                             |
-+---------------------------------------------+
-]]
+██╗   ██╗ ██████╗ ██╗██████╗ ██╗    ██╗ █████╗ ██████╗ ███████╗
+██║   ██║██╔═══██╗██║██╔══██╗██║    ██║██╔══██╗██╔══██╗██╔════╝
+██║   ██║██║   ██║██║██║  ██║██║ █╗ ██║███████║██████╔╝█████╗  
+╚██╗ ██╔╝██║   ██║██║██║  ██║██║███╗██║██╔══██║██╔═══╝ ██╔══╝  
+ ╚████╔╝ ╚██████╔╝██║██████╔╝╚███╔███╔╝██║  ██║██║     ███████╗
+  ╚═══╝   ╚═════╝ ╚═╝╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     ╚══════╝
 
+                🚀 VOIDWARE — 99 Nights In The Forest 🚀
+----------------------------------------------------------------------------
+  IMPORTANT:
+  You must copy and use the FULL script below. Do NOT press on the link.:
+
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/loader.lua", true))()
+
+----------------------------------------------------------------------------
+  For support head over to discord.gg/voidware
+----------------------------------------------------------------------------
+]]
 if not game:IsLoaded() then return end
 local CheatEngineMode = false
 if (not getgenv) or (getgenv and type(getgenv) ~= "function") then CheatEngineMode = true end
@@ -14,7 +24,6 @@ if getgenv and not getgenv().shared then CheatEngineMode = true; getgenv().share
 if getgenv and not getgenv().debug then CheatEngineMode = true; getgenv().debug = {traceback = function(string) return string end} end
 if getgenv and not getgenv().require then CheatEngineMode = true; end
 if getgenv and getgenv().require and type(getgenv().require) ~= "function" then CheatEngineMode = true end
-
 local debugChecks = {
     Type = "table",
     Functions = {
@@ -24,12 +33,12 @@ local debugChecks = {
         "getproto"
     }
 }
-
 local function checkExecutor()
     if identifyexecutor ~= nil and type(identifyexecutor) == "function" then
         local suc, res = pcall(function()
             return identifyexecutor()
         end)   
+        --local blacklist = {'appleware', 'cryptic', 'delta', 'wave', 'codex', 'swift', 'solara', 'vega'}
         local blacklist = {'solara', 'cryptic', 'xeno', 'ember', 'ronix'}
         local core_blacklist = {'solara', 'xeno'}
         if suc then
@@ -52,7 +61,6 @@ local function checkExecutor()
     end
 end
 task.spawn(function() pcall(checkExecutor) end)
-
 local function checkDebug()
     if CheatEngineMode then return end
     if not getgenv().debug then 
@@ -74,15 +82,15 @@ local function checkDebug()
         end
     end
 end
-
+--if (not CheatEngineMode) then checkDebug() end
 shared.CheatEngineMode = shared.CheatEngineMode or CheatEngineMode
 shared.ForcePlayerGui = true
 
 if game.PlaceId == 79546208627805 then
     pcall(function()
         game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "ExoWare | 99 Nights In The Forest",
-            Text = "Go In Game for ExoWare to load :D [You are in lobby currently]",
+            Title = "Voidware | 99 Nights In The Forest",
+            Text = "Go In Game for Voidware to load :D [You are in lobby currently]",
             Duration = 10
         })
     end)
@@ -110,7 +118,6 @@ task.spawn(function()
         repeat
             task.wait()
         until game:IsLoaded() and Players.LocalPlayer ~= nil
-
         local chatVersion = TextChatService and TextChatService.ChatVersion or Enum.ChatVersion.LegacyChatService
         local TagRegister = shared.TagRegister or {}
         if not shared.CheatEngineMode then
@@ -176,4 +183,4 @@ end)
 
 local commit = shared.CustomCommit and tostring(shared.CustomCommit) or shared.StagingMode and "staging" or "35ead6360a229d785bb5c2644a694b495f2cd58f"
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ExoWarePro/VW-Add/"..tostring(commit).."/newnightsintheforest.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/"..tostring(commit).."/newnightsintheforest.lua", true))()
